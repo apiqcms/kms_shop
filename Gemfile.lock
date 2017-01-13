@@ -1,9 +1,39 @@
 PATH
+  remote: ../../kms
+  specs:
+    kms (0.7.0)
+      active_model_serializers
+      ancestry
+      angular-rails-templates (~> 1.0.0)
+      bower-rails (~> 0.9.1)
+      cancancan (~> 1.9)
+      carrierwave (~> 1.0.0)
+      devise
+      dragonfly (~> 1.0.7)
+      less-rails
+      liquor
+      pg
+      rails (~> 5.0.0)
+      russian
+      slim-rails
+      textacular (~> 4.0.0)
+      therubyracer
+
+PATH
+  remote: ../kms_catalog
+  specs:
+    kms_catalog (0.4.0)
+      babosa
+      carrierwave
+      friendly_id (~> 5.0)
+      kms (>= 0.6.0)
+
+PATH
   remote: .
   specs:
     kms_shop (0.1.0)
+      kms (>= 0.6.0)
       kms_catalog (~> 0.4)
-      rails (~> 5.0.0, >= 5.0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -31,10 +61,11 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_model_serializers (0.10.3)
+    active_model_serializers (0.10.4)
       actionpack (>= 4.1, < 6)
       activemodel (>= 4.1, < 6)
-      jsonapi (= 0.1.1.beta2)
+      case_transform (>= 0.2)
+      jsonapi (= 0.1.1.beta6)
     activejob (5.0.1)
       activesupport (= 5.0.1)
       globalid (>= 0.3.6)
@@ -68,6 +99,8 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    case_transform (0.2)
+      activesupport
     combustion (0.5.5)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
@@ -96,32 +129,11 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
-    json (1.8.3)
-    jsonapi (0.1.1.beta2)
-      json (~> 1.8)
-    kms (0.7.0)
-      active_model_serializers
-      ancestry
-      angular-rails-templates (~> 1.0.0)
-      bower-rails (~> 0.9.1)
-      cancancan (~> 1.9)
-      carrierwave (~> 1.0.0)
-      devise
-      dragonfly (~> 1.0.7)
-      less-rails
-      liquor
-      pg
-      rails (~> 5.0.0)
-      russian
-      slim-rails
-      textacular (~> 4.0.0)
-      therubyracer
-    kms_catalog (0.4.0)
-      babosa
-      carrierwave
-      friendly_id (~> 5.0)
-      kms (>= 0.6.0)
-      rails (~> 5.0.0)
+    jsonapi (0.1.1.beta6)
+      jsonapi-parser (= 0.1.1.beta3)
+      jsonapi-renderer (= 0.1.1.beta1)
+    jsonapi-parser (0.1.1.beta3)
+    jsonapi-renderer (0.1.1.beta1)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (2.8.0)
@@ -216,8 +228,8 @@ GEM
     temple (0.7.7)
     textacular (4.0.1)
       activerecord (>= 3.0, < 5.1)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
       ref
     thor (0.19.4)
     thread_safe (0.3.5)
@@ -237,6 +249,8 @@ DEPENDENCIES
   byebug
   combustion (~> 0.5.4)
   factory_girl_rails
+  kms!
+  kms_catalog!
   kms_shop!
   rspec-rails (~> 3.5.0)
   shoulda-matchers (~> 3.1)
