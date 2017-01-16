@@ -12,6 +12,10 @@ module Kms
           render json: {errors: cart_populator.errors}.to_json, status: :unprocessable_entity
         end
       end
+
+      def destroy
+        current_cart.line_items.clear
+      end
     end
   end
 end

@@ -1,0 +1,15 @@
+en:
+  liquor_help:
+    variables:
+      cart:
+        main_description: '"cart" returns current cart object:'
+        properties:
+          total: 'Total'
+          line_items: 'Line Items collection'
+      line_item:
+        main_description: 'Accessible by iterating "cart.line_items" collection:'
+        properties:
+          title: 'Item title (concatenated by "-" product and variant titles)'
+          total: 'Item total'
+          price: 'Item price (i.e product or variant price)'
+          quantity: 'Item quantity'

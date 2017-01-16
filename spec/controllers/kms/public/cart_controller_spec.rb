@@ -25,6 +25,12 @@ module Kms
           end
         end
       end
+      describe 'DELETE destroy' do
+        it 'clears cart' do
+          delete :destroy, format: :json
+          expect(response.status).to be_eql(204)
+        end
+      end
 
     end
   end

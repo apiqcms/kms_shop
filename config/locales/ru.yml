@@ -1,0 +1,15 @@
+ru:
+  liquor_help:
+    variables:
+      cart:
+        main_description: '"cart" возвращает объект текущей корзины:'
+        properties:
+          total: 'Итого'
+          line_items: 'Коллекция позиций/товаров корзины'
+      line_item:
+        main_description: 'Объект является элементов коллекции "cart.line_items":'
+        properties:
+          title: 'Заголовок позиции (складывается из названий продукта и варианта, разделённых "-")'
+          total: 'Итого позиции'
+          price: 'Цена (т.е. цена продукта или варианта)'
+          quantity: 'Количество'

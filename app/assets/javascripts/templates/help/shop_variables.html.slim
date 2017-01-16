@@ -1,0 +1,45 @@
+h4 = I18n.t("liquor_help.variables_title")
+p
+  ul
+    li
+      var cart
+      p
+        span = I18n.t('liquor_help.variables.cart.main_description')
+      p
+        code
+          | {{ cart.total }}
+      p
+        table.table
+          tr
+            th #{ I18n.t('liquor_help.properties') } Cart
+            th = I18n.t('liquor_help.description')
+          tr
+            td total
+            td = I18n.t('liquor_help.variables.cart.properties.total')
+          tr
+            td line_items
+            td = I18n.t('liquor_help.variables.cart.properties.line_items')
+    li
+      var line_item
+      p
+        span = I18n.t('liquor_help.variables.line_item.main_description')
+      p
+        code
+          | {% for line_item in: cart.line_items do: %}
+      p
+        table.table
+          tr
+            th #{ I18n.t('liquor_help.properties') } LineItem
+            th = I18n.t('liquor_help.description')
+          tr
+            td title
+            td = I18n.t('liquor_help.variables.line_item.properties.title')
+          tr
+            td quantity
+            td = I18n.t('liquor_help.variables.line_item.properties.quantity')
+          tr
+            td price
+            td = I18n.t('liquor_help.variables.line_item.properties.price')
+          tr
+            td total
+            td = I18n.t('liquor_help.variables.line_item.properties.total')
