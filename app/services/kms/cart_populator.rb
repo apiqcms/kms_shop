@@ -8,16 +8,16 @@ module Kms
     def initialize(cart, params)
       @cart = cart
       @variant_id = params[:variant_id]
-      @quantity = params[:quantity].to_i
+      @quantity = params[:quantity]
     end
 
     def populate
       return unless populating_possible?
       line_item = @cart.line_items.find_by(variant_id: @variant_id)
       unless line_item
-        line_item = @cart.line_items.create(variant_id: @variant_id, quantity: @quantity)
+        line_item = @cart.line_items.create(variant_id: @variant_id, quantity: @quantity.to_i)
       else
-        line_item.update(quantity: line_item.quantity + @quantity)
+        line_item.update(quantity: line_item.quantity + @quantity.to_i)
       end
     end
 
