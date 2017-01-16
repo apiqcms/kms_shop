@@ -1,5 +1,6 @@
-PATH
-  remote: ../../kms
+GIT
+  remote: git://github.com/webgradus/kms.git
+  revision: 42d6c63c55fe535f9492fe7832ffe7aab8d6a43d
   specs:
     kms (0.7.0)
       active_model_serializers
@@ -19,10 +20,11 @@ PATH
       textacular (~> 4.0.0)
       therubyracer
 
-PATH
-  remote: ../kms_catalog
+GIT
+  remote: git://github.com/webgradus/kms_catalog.git
+  revision: 92215de1a8865fcd83a133bf566453bd4da040bf
   specs:
-    kms_catalog (0.4.0)
+    kms_catalog (0.5.0)
       babosa
       carrierwave
       friendly_id (~> 5.0)
