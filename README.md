@@ -1,4 +1,6 @@
 # KMS Shop
+[![Build Status](https://travis-ci.org/webgradus/kms_shop.svg?branch=master)](https://travis-ci.org/webgradus/kms_shop)
+
 Extends KMS Catalog by adding cart and orders feature.
 
 ## Installation
