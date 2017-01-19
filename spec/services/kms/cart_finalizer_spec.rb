@@ -6,18 +6,18 @@ module Kms
     describe '#finalize' do
 
       it 'validates customer' do
-        cart_finalizer = CartFinalizer.new(cart, customer: {})
+        cart_finalizer = CartFinalizer.new(cart, {})
         expect(cart_finalizer.customer).to receive(:valid?)
         cart_finalizer.finalize
       end
       context 'when no customer data passed' do
         it 'returns nil or false' do
-          cart_finalizer = CartFinalizer.new(cart, customer: {name: nil})
+          cart_finalizer = CartFinalizer.new(cart, {name: nil})
           expect(cart_finalizer.finalize).to be_falsy
         end
       end
       context 'when customer data valid' do
-        let(:cart_finalizer) { CartFinalizer.new(cart, customer: {name: 'John'}) }
+        let(:cart_finalizer) { CartFinalizer.new(cart, {name: 'John'}) }
         let(:result) { cart_finalizer.finalize }
         it 'returns Order object' do
           expect(result).to be_instance_of(Kms::Order)

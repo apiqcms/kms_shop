@@ -13,3 +13,20 @@ en:
           total: 'Item total'
           price: 'Item price (i.e product or variant price)'
           quantity: 'Item quantity'
+    endpoints:
+      cart:
+        put:
+          main_description: 'This endpoint allows adding to cart'
+          parameters:
+            variant_id: 'Id of Variant'
+            quantity: 'Quantity'
+        delete:
+          main_description: 'This endpoint allows to clear current cart'
+      checkout:
+        post:
+          main_description: 'Use this endpoint for checkout (order placement)'
+          parameters:
+            customer:
+              name: 'Customer Name'
+              email: 'Customer Email'
+              phone: 'Customer Phone'

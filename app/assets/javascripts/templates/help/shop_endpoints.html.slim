@@ -1,0 +1,81 @@
+h4 = I18n.t("liquor_help.endpoints_title")
+p
+  ul
+    li
+      var PUT /cart
+      p
+        span = I18n.t('liquor_help.endpoints.cart.put.main_description')
+      p
+        code ng-non-bindable=''
+          | &lt;form action="/cart" method="post"&gt;
+          br
+          |   &lt;input type="hidden" name='authenticity_token' value='{{ request.form_authenticity_token }}'&gt;
+          br
+          |   &lt;input type="hidden" name="_method" value="put"&gt;
+          br
+          |   &lt;input type="hidden" name="variant_id" value="{{ product.master.id }}"&gt;
+          br
+          |   &lt;input type="number" name="quantity" min="1" value="1"&gt;
+          br
+          |   &lt;input type="submit" value="Add to cart"&gt;
+          br
+          | &lt;/form&gt;
+      p
+        table.table
+          tr
+            th #{ I18n.t('liquor_help.parameter') } /cart
+            th = I18n.t('liquor_help.description')
+          tr
+            td variant_id
+            td = I18n.t('liquor_help.endpoints.cart.put.parameters.variant_id')
+          tr
+            td quantity
+            td = I18n.t('liquor_help.endpoints.cart.put.parameters.quantity')
+    li
+      var DELETE /cart
+      p
+        span = I18n.t('liquor_help.endpoints.cart.delete.main_description')
+      p
+        code ng-non-bindable=''
+          | &lt;form action="/cart" method="post"&gt;
+          br
+          |   &lt;input type="hidden" name='authenticity_token' value='{{ request.form_authenticity_token }}'&gt;
+          br
+          |   &lt;input type="hidden" name="_method" value="delete"&gt;
+          br
+          |   &lt;input type="submit" value="Clear cart"&gt;
+          br
+          | &lt;/form&gt;
+    li
+      var POST /checkout
+      p
+        span = I18n.t('liquor_help.endpoints.checkout.post.main_description')
+      p
+        code ng-non-bindable=''
+          | &lt;form action="/checkout" method="post"&gt;
+          br
+          | &lt;input type="hidden" name='authenticity_token' value='{{ request.form_authenticity_token }}'&gt;
+          br
+          | &lt;input type="text" name="customer[name]" placeholder="Name" required&gt;
+          br
+          | &lt;input type="email" name="customer[email]" placeholder="Email"&gt;
+          br
+          | &lt;input type="text" name="customer[phone]" placeholder="Phone"&gt;
+          br
+          | &lt;input type="submit" value="Checkout"&gt;
+          br
+          | &lt;/form&gt;
+      p
+        table.table
+          tr
+            th #{ I18n.t('liquor_help.parameter') } /checkout
+            th = I18n.t('liquor_help.description')
+          tr
+            td customer[name]
+            td = I18n.t('liquor_help.endpoints.checkout.post.parameters.customer.name')
+          tr
+            td customer[email]
+            td = I18n.t('liquor_help.endpoints.checkout.post.parameters.customer.email')
+          tr
+            td customer[phone]
+            td = I18n.t('liquor_help.endpoints.checkout.post.parameters.customer.phone')

@@ -6,12 +6,12 @@ p
       p
         span = I18n.t('liquor_help.variables.cart.main_description')
       p
-        code
+        code ng-non-bindable=''
           | {{ cart.total }}
       p
         table.table
           tr
-            th #{ I18n.t('liquor_help.properties') } Cart
+            th #{ I18n.t('liquor_help.property') } Cart
             th = I18n.t('liquor_help.description')
           tr
             td total
@@ -29,7 +29,7 @@ p
       p
         table.table
           tr
-            th #{ I18n.t('liquor_help.properties') } LineItem
+            th #{ I18n.t('liquor_help.property') } LineItem
             th = I18n.t('liquor_help.description')
           tr
             td title

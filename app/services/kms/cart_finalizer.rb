@@ -3,9 +3,9 @@ module Kms
     include ActiveModel::Validations
     attr_accessor :customer
 
-    def initialize(cart, params)
+    def initialize(cart, customer_params)
       @cart = cart
-      @customer =  Kms::Customer.new(params[:customer])
+      @customer =  Kms::Customer.new(customer_params)
     end
 
     def finalize

@@ -7,6 +7,7 @@ module Kms
       def create
         cart_finalizer = Kms::CartFinalizer.new(current_cart, customer_params)
         if order = cart_finalizer.finalize
+          session[:cart_id] = nil
           render json: order, root: false
         else
           render json: {errors: order || {}}.to_json, status: :unprocessable_entity

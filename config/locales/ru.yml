@@ -13,3 +13,20 @@ ru:
           total: 'Итого позиции'
           price: 'Цена (т.е. цена продукта или варианта)'
           quantity: 'Количество'
+    endpoints:
+      cart:
+        put:
+          main_description: 'Данный запрос позволяет реализовать добавление в корзину'
+          parameters:
+            variant_id: 'Id Варианта'
+            quantity: 'Количество'
+        delete:
+          main_description: 'Запрос по этому URL очищает содержимое корзины'
+      checkout:
+        post:
+          main_description: 'Используйте этот запрос для оформления заказа'
+          parameters:
+            customer:
+              name: 'Имя клиента'
+              email: 'Email'
+              phone: 'Номер телефона'
