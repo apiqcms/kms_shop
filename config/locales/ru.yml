@@ -1,4 +1,12 @@
 ru:
+  shop: 'Магазин'
+  activerecord:
+    models:
+      kms/order:
+        one: "Заказ"
+        few: "Заказа"
+        many: "Заказов"
+        other: "Заказы"
   liquor_help:
     variables:
       cart:

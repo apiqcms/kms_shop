@@ -10,4 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require "./application/routes"
 //= require_tree "../templates"
+//= require_tree "./application/controllers"

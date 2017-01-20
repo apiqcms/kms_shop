@@ -1,0 +1,17 @@
+'use strict'
+
+angular.module('KMS').config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) ->
+
+    # Application routes
+    $stateProvider
+        .state('orders', {
+            url: '/kms/orders',
+            views:
+              "header":
+                template: "<%= Kms::Order.model_name.human(count: 1.1) %>"
+              "@":
+                controller: 'OrdersController',
+                controllerAs: 'orders',
+                templateUrl: 'orders/index.html'
+        })
+]

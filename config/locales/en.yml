@@ -1,4 +1,12 @@
 en:
+  shop: 'Shop'
+  activerecord:
+    models:
+      kms/order:
+        one: "Order"
+        few: "Orders"
+        many: "Orders"
+        other: "Orders"
   liquor_help:
     variables:
       cart:
