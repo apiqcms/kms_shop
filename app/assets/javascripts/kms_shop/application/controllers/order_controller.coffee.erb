@@ -1,4 +1,13 @@
 OrdersController = ($scope, $state, $cookieStore, Restangular, $stateParams) ->
+  $scope.store = Restangular.all('orders')
+
+  $scope.store.getList().then (orders)->
+    $scope.orders = orders
+
+  $scope.destroy = (order)->
+    if(confirm('<%= I18n.t(:are_you_sure) %>'))
+      order.remove().then ->
+        $scope.orders = _.without($scope.orders, order)
 
 
 angular.module('KMS')

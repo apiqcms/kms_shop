@@ -13,8 +13,8 @@ require 'devise'
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
-  # config.include Devise::TestHelpers, type: :controller
-  #config.extend ControllerMacros, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.extend ControllerMacros, type: :controller
   config.include Requests::JsonHelpers, type: :controller
   config.color = true
   config.mock_with :rspec

@@ -9,5 +9,6 @@ module Kms
       expect(described_class.reflect_on_association(:customer)).to_not be_nil
     end
     it { should delegate_method(:line_items).to(:cart) }
+    it { should delegate_method(:total).to(:cart) }
   end
 end

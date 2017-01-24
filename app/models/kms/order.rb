@@ -3,6 +3,6 @@ module Kms
     belongs_to :cart
     belongs_to :customer
 
-    delegate :line_items, to: :cart
+    delegate :line_items, :total, to: :cart
   end
 end

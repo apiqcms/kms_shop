@@ -1,0 +1,23 @@
+.row
+  .col-lg-12
+    .widget
+      .widget-header
+        i.fa.fa-barcode
+        = Kms::Order.model_name.human(count: 1.1)
+        /a.btn.btn-sm.btn-primary.pull-right ui-sref="products.new"
+          /= I18n.t("add_product")
+      .widget-body.no-padding
+        .table-responsive
+          table.table
+            tbody
+              tr ng-repeat="order in orders"
+                td style="width: 70%"
+                  | {{ order.id }}
+                td style="width: 20%"
+                  | {{ order.total }}
+                td
+                  .btn-group.pull-right
+                    a.btn.btn-sm.btn-info ui-sref="orders.edit({id: order.id})"
+                      i.fa.fa-pencil
+                    a.btn.btn-sm.btn-danger ng-click="destroy(order)"
+                      i.fa.fa-times

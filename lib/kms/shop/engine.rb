@@ -1,6 +1,7 @@
 module Kms
   module Shop
     class Engine < ::Rails::Engine
+      engine_name 'kms_shop'
       isolate_namespace Kms::Shop
       config.autoload_paths += Dir["#{config.root}/lib/**/"]
       config.to_prepare do
