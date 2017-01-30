@@ -7,17 +7,49 @@
         /a.btn.btn-sm.btn-primary.pull-right ui-sref="products.new"
           /= I18n.t("add_product")
       .widget-body.no-padding
-        .table-responsive
-          table.table
-            tbody
-              tr ng-repeat="order in orders"
-                td style="width: 70%"
-                  | {{ order.id }}
-                td style="width: 20%"
-                  | {{ order.total }}
-                td
-                  .btn-group.pull-right
-                    a.btn.btn-sm.btn-info ui-sref="orders.edit({id: order.id})"
-                      i.fa.fa-pencil
-                    a.btn.btn-sm.btn-danger ng-click="destroy(order)"
-                      i.fa.fa-times
+        accordion close-others="true"
+          accordion-group is-open="status.open" ng-repeat="order in orders"
+            accordion-heading
+              i.pull-left.glyphicon ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"
+              | &nbsp;
+              = Kms::Order.model_name.human
+              | &nbsp;{{ order.id }}&nbsp;
+              = I18n.t(:with_total)
+              | &nbsp;{{ order.total }}
+              .pull-right
+                | {{ order.created_at | date: 'dd MMM yyyy HH:mm' }}
+            .row
+              .col-md-12 style="padding-right:0"
+                .btn-group.pull-right
+                  /a.btn.btn-info ui-sref="orders.edit({id: order.id})"
+                    /= I18n.t(:edit)
+                  a.btn.btn-danger.pull-right ng-click="destroy(order)"
+                    = I18n.t(:delete)
+            .table-responsive
+              table.table.table-bordered
+                tbody
+                  tr ng-repeat="line_item in order.line_items"
+                    td style="width: 50%"
+                      | {{ line_item.title }}
+                    td style="width: 10%"
+                      | {{ line_item.price }}
+                    td style="width: 10%"
+                      | {{ line_item.quantity }}
+                    td style="width: 10%"
+                      | {{ line_item.total }}
+            .row
+              .col-md-4
+                dl
+                  dt = Kms::Customer.human_attribute_name(:name)
+                  dd
+                    | {{ order.customer.name }}
+              .col-md-4
+                dl
+                  dt = Kms::Customer.human_attribute_name(:phone)
+                  dd
+                    | {{ order.customer.phone }}
+              .col-md-4
+                dl
+                  dt = Kms::Customer.human_attribute_name(:email)
+                  dd
+                    | {{ order.customer.email }}

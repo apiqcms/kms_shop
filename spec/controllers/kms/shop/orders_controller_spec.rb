@@ -12,7 +12,8 @@ module Kms
 
           expect(response).to be_success
           expect(json.length).to eq(1)
-          expect(json[0].keys).to include('id', 'total', 'created_at')
+          expect(json[0].keys).to include('id', 'total', 'line_items', 'customer', 'created_at')
+          expect(json[0]['line_items'][0].keys).to include('id', 'title', 'price', 'quantity', 'total')
         end
       end
 

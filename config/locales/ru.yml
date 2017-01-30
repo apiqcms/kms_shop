@@ -1,5 +1,8 @@
 ru:
   shop: 'Магазин'
+  with_total: 'на сумму'
+  edit: "Редактировать"
+  delete: "Удалить"
   activerecord:
     models:
       kms/order:
@@ -7,6 +10,11 @@ ru:
         few: "Заказа"
         many: "Заказов"
         other: "Заказы"
+    attributes:
+      kms/customer:
+        name: 'Имя'
+        phone: 'Телефон'
+        email: 'Email'
   liquor_help:
     variables:
       cart:

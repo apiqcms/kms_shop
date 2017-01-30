@@ -1,5 +1,8 @@
 en:
   shop: 'Shop'
+  with_total: 'with total'
+  edit: "Edit"
+  delete: "Delete"
   activerecord:
     models:
       kms/order:
@@ -7,6 +10,11 @@ en:
         few: "Orders"
         many: "Orders"
         other: "Orders"
+    attributes:
+      kms/customer:
+        name: 'Name'
+        phone: 'Phone number'
+        email: 'Email'
   liquor_help:
     variables:
       cart:
