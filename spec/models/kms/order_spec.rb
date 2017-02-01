@@ -10,5 +10,7 @@ module Kms
     end
     it { should delegate_method(:line_items).to(:cart) }
     it { should delegate_method(:total).to(:cart) }
+    it { should accept_nested_attributes_for(:customer) }
+    it { should accept_nested_attributes_for(:cart) }
   end
 end

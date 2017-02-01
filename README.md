@@ -29,6 +29,10 @@ Extends KMS Catalog by adding cart and orders feature.
 
 6. Restart KMS instance
 
+## Usage
+
+Once install please check "Help" page at the bottom of sidebar
+
 ## Contributing
 
 Please follow [CONTRIBUTING.md](CONTRIBUTING.md).

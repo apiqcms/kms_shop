@@ -1,8 +1,21 @@
-OrdersController = ($scope, $state, $cookieStore, Restangular, $stateParams) ->
+OrdersController = ($scope, $state, $cookieStore, Restangular, $stateParams, Alertify, ErrorsService) ->
   $scope.store = Restangular.all('orders')
 
   $scope.store.getList().then (orders)->
     $scope.orders = orders
+
+  $scope.update = (data, order, line_item)->
+    if line_item
+      line_item.quantity = data
+    order.cart_attributes = {id: order.cart.id, line_items_attributes: order.line_items}
+    order.customer.name = data.name
+    order.customer.phone = data.phone
+    order.customer.email = data.email
+    order.customer_attributes = order.customer
+    order.put().then (updated_order)->
+      $state.reload()
+    ,(response)->
+      Alertify.error(ErrorsService.prepareErrorsString(response.data.errors))
 
   $scope.destroy = (order)->
     if(confirm('<%= I18n.t(:are_you_sure) %>'))
@@ -11,4 +24,4 @@ OrdersController = ($scope, $state, $cookieStore, Restangular, $stateParams) ->
 
 
 angular.module('KMS')
-    .controller('OrdersController', ['$scope', '$state', '$cookieStore', 'Restangular', '$stateParams', OrdersController])
+    .controller('OrdersController', ['$scope', '$state', '$cookieStore', 'Restangular', '$stateParams', 'Alertify', 'ErrorsService', OrdersController])

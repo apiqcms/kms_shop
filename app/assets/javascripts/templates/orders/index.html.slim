@@ -20,11 +20,17 @@
                 | {{ order.created_at | date: 'dd MMM yyyy HH:mm' }}
             .row
               .col-md-12 style="padding-right:0"
+                a.btn.btn-danger.pull-right ng-click="destroy(order)"
+                  = I18n.t(:delete)
                 .btn-group.pull-right
-                  /a.btn.btn-info ui-sref="orders.edit({id: order.id})"
-                    /= I18n.t(:edit)
-                  a.btn.btn-danger.pull-right ng-click="destroy(order)"
-                    = I18n.t(:delete)
+                  form.form-buttons.form-inline editable-form="" name="editLineItemForm" ng-show="editLineItemForm.$visible" onbeforesave="update($data, order)"
+                    button.btn.btn-primary ng-disabled="editLineItemForm.$waiting" type="submit"
+                      span class="glyphicon glyphicon-ok"
+                    button.btn.btn-default ng-click="editLineItemForm.$cancel()" ng-disabled="editLineItemForm.$waiting" type="button"
+                      span class="glyphicon glyphicon-remove"
+                  div ng-show="!editLineItemForm.$visible"
+                    a.btn.btn-info ng-click="editLineItemForm.$show()" ng-show="!editLineItemForm.$visible"
+                      = I18n.t(:edit)
             .table-responsive
               table.table.table-bordered
                 tbody
@@ -34,22 +40,23 @@
                     td style="width: 10%"
                       | {{ line_item.price }}
                     td style="width: 10%"
-                      | {{ line_item.quantity }}
+                      a href='#' editable-number="line_item.quantity" e-name="quantity" onbeforesave="update($data, order, line_item)"
+                        | {{ line_item.quantity }}
                     td style="width: 10%"
                       | {{ line_item.total }}
             .row
               .col-md-4
                 dl
                   dt = Kms::Customer.human_attribute_name(:name)
-                  dd
+                  dd editable-text="order.customer.name" e-name="name" e-form="editLineItemForm"
                     | {{ order.customer.name }}
               .col-md-4
                 dl
                   dt = Kms::Customer.human_attribute_name(:phone)
-                  dd
+                  dd editable-text="order.customer.phone" e-name="phone" e-form="editLineItemForm"
                     | {{ order.customer.phone }}
               .col-md-4
                 dl
                   dt = Kms::Customer.human_attribute_name(:email)
-                  dd
+                  dd editable-email="order.customer.email" e-name="email" e-form="editLineItemForm"
                     | {{ order.customer.email }}
