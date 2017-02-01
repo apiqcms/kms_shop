@@ -31,7 +31,11 @@ Extends KMS Catalog by adding cart and orders feature.
 
 ## Usage
 
-Once install please check "Help" page at the bottom of sidebar
+Once install please check "Help" page at the bottom of sidebar.
+
+Also watch this video to start using KMS Shop:
+
+[![Getting started with KMS Shop extension](http://img.youtube.com/vi/fh9xW0PAHsk/0.jpg)](https://youtu.be/fh9xW0PAHsk "Getting started with KMS Shop extension")
 
 ## Contributing
 
