@@ -3,7 +3,7 @@ module Kms
     class Engine < ::Rails::Engine
       engine_name 'kms_shop'
       isolate_namespace Kms::Shop
-      config.autoload_paths += Dir["#{config.root}/lib/**/"]
+      config.eager_load_paths += Dir["#{config.root}/lib/**/"]
       config.to_prepare do
         Dir.glob(File.join(File.dirname(__FILE__), "../../../app/**/*_decorator*.rb")) do |c|
           require_dependency(c)
