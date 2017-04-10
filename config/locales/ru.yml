@@ -30,12 +30,18 @@ ru:
           price: 'Цена (т.е. цена продукта или варианта)'
           quantity: 'Количество'
     endpoints:
-      cart:
-        put:
+      populate_cart:
+        patch:
           main_description: 'Данный запрос позволяет реализовать добавление в корзину'
           parameters:
             variant_id: 'Id Варианта'
             quantity: 'Количество'
+      cart:
+        put:
+          main_description: 'Запрос позволяет обновить содержимое всей корзины (всех позиций). Принимает параметры следующего вида: { cart: [{id: ..., quantity: ...}, ...] }'
+          parameters:
+            id: 'Id позиции корзины (Line Item)'
+            quantity: 'Новое количество'
         delete:
           main_description: 'Запрос по этому URL очищает содержимое корзины'
       checkout:

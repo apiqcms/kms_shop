@@ -2,9 +2,9 @@ h4 = I18n.t("liquor_help.endpoints_title")
 p
   ul
     li
-      var PUT /cart
+      var PATCH /cart/populate
       p
-        span = I18n.t('liquor_help.endpoints.cart.put.main_description')
+        span = I18n.t('liquor_help.endpoints.populate_cart.patch.main_description')
       p
         code ng-non-bindable=''
           | &lt;form action="/cart" method="post"&gt;
@@ -27,6 +27,40 @@ p
             th = I18n.t('liquor_help.description')
           tr
             td variant_id
+            td = I18n.t('liquor_help.endpoints.populate_cart.patch.parameters.variant_id')
+          tr
+            td quantity
+            td = I18n.t('liquor_help.endpoints.populate_cart.patch.parameters.quantity')
+    li
+      var PATCH/PUT /cart
+      p
+        span = I18n.t('liquor_help.endpoints.cart.put.main_description')
+      p
+        code ng-non-bindable=''
+          | &lt;form action="/cart" method="post"&gt;
+          br
+          |   &lt;input type="hidden" name='authenticity_token' value='{{ request.form_authenticity_token }}'&gt;
+          br
+          |   &lt;input type="hidden" name="_method" value="put"&gt;
+          br
+          | {% for line_item in: cart.line_items do: %}
+          br
+          |   &lt;input type="hidden" name="cart[][id]" value="{{ line_item.id }}"&gt;
+          br
+          |   &lt;input type="number" name="cart[][quantity]" min="1" value="{{ line_item.quantity }}"&gt;
+          br
+          | {% end for %}
+          br
+          |   &lt;input type="submit" value="Update"&gt;
+          br
+          | &lt;/form&gt;
+      p
+        table.table
+          tr
+            th #{ I18n.t('liquor_help.parameter') } /cart
+            th = I18n.t('liquor_help.description')
+          tr
+            td id
             td = I18n.t('liquor_help.endpoints.cart.put.parameters.variant_id')
           tr
             td quantity

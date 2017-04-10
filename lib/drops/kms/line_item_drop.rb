@@ -1,6 +1,6 @@
 module Kms
   class LineItemDrop < Liquor::Drop
-    attributes :quantity, :price, :total, :title
+    attributes :id, :quantity, :price, :total, :title
 
     def price
       source.variant.price.to_s

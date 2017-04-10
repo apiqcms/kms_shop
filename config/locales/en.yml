@@ -30,12 +30,18 @@ en:
           price: 'Item price (i.e product or variant price)'
           quantity: 'Item quantity'
     endpoints:
-      cart:
-        put:
+      populate_cart:
+        patch:
           main_description: 'This endpoint allows adding to cart'
           parameters:
             variant_id: 'Id of Variant'
             quantity: 'Quantity'
+      cart:
+        put:
+          main_description: 'This endpoint allows to update all items in cart. Accepts array of parameters in following form: { cart: [{id: ..., quantity: ...}, ...] }'
+          parameters:
+            id: 'Id of Line Item'
+            quantity: 'New quantity'
         delete:
           main_description: 'This endpoint allows to clear current cart'
       checkout:
